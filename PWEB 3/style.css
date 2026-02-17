@@ -1,0 +1,169 @@
+/* ======================================== */
+/* BAGIAN 1: RESET & GLOBAL STYLING */
+/* ======================================== */
+
+/* Reset default margin & padding semua element */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;  /* Hitung ukuran termasuk padding & border */
+}
+
+/* Styling body (seluruh halaman) */
+body {
+    /* Gradient background: dari biru (#667eea) ke ungu (#764ba2) */
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;  /* Minimal tinggi 100% viewport height */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;  /* Font modern */
+}
+
+/* Class gradient untuk element lain yang ingin gradient sama */
+.bg-gradient {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* ======================================== */
+/* BAGIAN 2: CARD STYLING (Kotak Utama) */
+/* ======================================== */
+
+/* Card: kotak putih tempat semua konten */
+.card {
+    border-radius: 1rem !important;  /* Sudut melengkung */
+    overflow: hidden;  /* Sembunyikan konten yang melebihi border */
+}
+
+/* Header card: nama & deskripsi aplikasi */
+.card-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    border: none !important;  /* Hapus border default */
+}
+
+/* ======================================== */
+/* BAGIAN 3: TASK ITEM STYLING (Setiap Tugas) */
+/* ======================================== */
+
+/* Styling untuk setiap item tugas di list */
+.task-item {
+    border: none !important;  /* Hapus border kiri-kanan */
+    border-bottom: 1px solid #e9ecef !important;  /* Garis separator antar tugas */
+    transition: all 0.3s ease;  /* Smooth animation untuk perubahan */
+    cursor: pointer;  /* Ubah cursor jadi pointer saat hover */
+}
+
+/* Efek saat mouse hover di task item */
+.task-item:hover {
+    background-color: #f8f9fa;  /* Warna latar agak lebih gelap */
+    transform: translateX(5px);  /* Geser ke kanan 5px */
+}
+
+/* Hapus garis bawah untuk tugas terakhir */
+.task-item:last-child {
+    border-bottom: none !important;
+}
+
+/* ======================================== */
+/* BAGIAN 4: BUTTON STYLING */
+/* ======================================== */
+
+/* Efek saat hover tombol Edit (warning/kuning) */
+.btn-outline-warning:hover {
+    background-color: #ffc107;  /* Ubah ke kuning */
+    color: #000;  /* Teks jadi hitam */
+}
+
+/* Efek saat hover tombol Delete (danger/merah) */
+.btn-outline-danger:hover {
+    background-color: #dc3545;  /* Ubah ke merah */
+    color: white;  /* Teks putih */
+}
+
+/* Styling input field & button saat fokus (user klik) */
+.form-control:focus,
+.btn:focus {
+    border-color: #667eea !important;  /* Border berubah jadi biru */
+    box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25) !important;  /* Glow kebiruan */
+}
+
+/* Tombol Add (Primary button) */
+.btn-primary {
+    background-color: #667eea;
+    border-color: #667eea;
+}
+
+/* Effect saat hover tombol Add */
+.btn-primary:hover {
+    background-color: #764ba2;  /* Ubah ke ungu */
+    border-color: #764ba2;
+}
+
+/* Fix untuk browser yang auto-fill input (Chrome) */
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px white inset !important;  /* Override warna auto-fill */
+}
+
+/* ======================================== */
+/* BAGIAN 5: ANIMASI */
+/* ======================================== */
+
+/* Keyframe animasi: slide in dari atas */
+@keyframes slideIn {
+    from {
+        opacity: 0;  /* Awalnya transparan */
+        transform: translateY(-10px);  /* Posisi 10px ke atas */
+    }
+    to {
+        opacity: 1;  /* Akhirnya opaque (terlihat) */
+        transform: translateY(0);  /* Posisi normal */
+    }
+}
+
+/* Aplikasikan animasi slide-in ke setiap task yang baru ditambah */
+.task-item {
+    animation: slideIn 0.3s ease;  /* Durasi 0.3 detik dengan timing ease */
+}
+
+/* Styling untuk tugas yang sudah selesai (strikethrough) */
+.text-decoration-line-through {
+    opacity: 0.6;  /* Buat sedikit transparan */
+}
+
+/* ======================================== */
+/* BAGIAN 6: TOAST NOTIFICATION */
+/* ======================================== */
+
+/* Toast: notifikasi kecil di sudut layar */
+.toast {
+    min-width: 250px;  /* Minimal lebar */
+    border-radius: 0.5rem;  /* Sudut melengkung */
+    font-weight: 500;  /* Teks lebih bold */
+    z-index: 1050;  /* Selalu di atas element lain */
+}
+
+/* Styling untuk notifikasi sukses (hijau) */
+.bg-success {
+    background-color: #198754 !important;
+    color: white;
+}
+
+/* Styling untuk notifikasi error (merah) */
+.bg-danger {
+    background-color: #dc3545 !important;
+    color: white;
+}
+
+/* Animasi saat toast muncul */
+.toast.show {
+    animation: slideUp 0.3s ease;
+}
+
+/* Keyframe animasi: slide up dari bawah */
+@keyframes slideUp {
+    from {
+        opacity: 0;  /* Awalnya transparan */
+        transform: translateY(20px);  /* Posisi 20px ke bawah */
+    }
+    to {
+        opacity: 1;  /* Akhirnya terlihat */
+        transform: translateY(0);  /* Posisi normal */
+    }
+}
